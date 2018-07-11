@@ -25,10 +25,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('',include('product.urls')),
-   #path('',include('search.urls','search'),namespace=None)
     url(r'^search/', include(('search.urls', 'search'), namespace='search')),
     path('', include('django.contrib.auth.urls')),
-    path('cart/', include('cart.urls'))
+    path('cart/', include('cart.urls')),
+    path('',include('orders.urls'))
 
 ]
 

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'search',
     'cart',
     'widget_tweaks',
+    'orders'
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,5 @@ MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR),"static_cdn","media_root")
 LOGIN_REDIRECT_URL = 'index'
 LOGOUT_REDIRECT_URL = 'index'
 LOGIN_URL='loginf'
+
+CART_SESSION_ID='cart'

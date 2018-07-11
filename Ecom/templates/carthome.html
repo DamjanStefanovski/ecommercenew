@@ -9,8 +9,8 @@
                 {% with totail_items=cart|length %}
                     {% if cart|length > 0 %}
                         My Shopping Order:
-                        <a href="{% url 'cart:cart_detail' %}" style="color: #ffffff">
-                            {{ totail_items }} item {{ totail_items|pluralize }}, Kshs. {{ cart.get_total_price }}
+                        <a href="{% url 'cart_detail' %}" style="color: #ffffff">
+                            {{ totail_items }} item {{ totail_items|pluralize }}, Rs. {{ cart.get_total_price }}
                         </a>
                         {% else %}
                         Your cart is empty.
@@ -40,7 +40,7 @@
                             </td>
                             <td>{{ product.name }}</td>
                             <td>
-                                <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                <form action="{% url 'cart_add' product.id %}" method="post">
                                     {% csrf_token %}
                                     {{ item.update_quantity_form.quantity }}
                                     {{ item.update_quantity_form.update }}
@@ -48,23 +48,23 @@
                                 </form>
                             </td>
                             <td>
-                                <a href="{% url 'cart:cart_remove' product.id %}">Remove</a>
+                                <a href="{% url 'cart_remove' product.id %}">Remove</a>
                             </td>
-                            <td>kshs. {{ item.price }}</td>
-                            <td>kshs. {{ item.total_price }}</td>
+                            <td>RS. {{ item.price }}</td>
+                            <td>Rs. {{ item.total_price }}</td>
                         </tr>
                     {% endwith %}
                 {% endfor %}
                 <tr>
                     <td><b>Total</b></td>
                     <td colspan="4"></td>
-                    <td colspan="num"><b>kshs. {{ cart.get_total_price }}</b></td>
+                    <td colspan="num"><b>Rs. {{ cart.get_total_price }}</b></td>
                 </tr>
                 </tbody>
             </table>
         <p class="text-right">
-            <a href="#" class="btn btn-default">Continue Shopping</a>
-            <a href="" class="btn btn-primary">Checkout</a>
+            <a href="{% url 'productlist' %}" class="btn btn-default">Continue Shopping</a>
+            <a href="{% url 'orders:order_create' %}" class="btn btn-primary">Checkout</a>
         </p>
         </div>
     </div>

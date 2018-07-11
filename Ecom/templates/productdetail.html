@@ -8,9 +8,11 @@
         {% if product_detail.image%}
         <img src="{{product_detail.image.url}}" class="image-fluid">
     </div>
-    <form action="{% url 'cart_home' %}">
+    <form action="{% url 'cart_add' product_detail.id %}" method="post">
     <div class="col-12 col-md-6">
-        <button class="btn btn-success">Add To Cart</button>
+        {% csrf_token %}
+        {{cart_product_form}}
+        <input type="submit" value="Add to cart" class="btn btn-success">
     </div>
     </form>
 

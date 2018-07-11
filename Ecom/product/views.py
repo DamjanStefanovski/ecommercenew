@@ -2,6 +2,7 @@ from django.http import Http404
 from .models import Product
 from django.views.generic import ListView,DetailView
 from django.shortcuts import render, get_object_or_404
+from cart.forms import CartAddProductForm
 
 
 # Create your views here.
@@ -27,8 +28,10 @@ def productdetail(request, pk=None, *args, **kwargs):
     # if prod_detail is None:
     #     raise Http404("product doesnot exist")
     #-------
+    cart_product_form=CartAddProductForm()
     context = {
-        'product_detail': prod_detail
+        'product_detail': prod_detail,
+        'cart_product_form':cart_product_form
     }
 
     return render(request, 'productdetail.html', context)
