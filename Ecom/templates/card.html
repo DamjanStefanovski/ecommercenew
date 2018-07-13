@@ -1,6 +1,6 @@
 <div class="card" style="width: 20rem;">
   {% if instance.image %}
-    <a href="{{ instance.get_absolute_url }}"><img class="card-img-top" src="{{ instance.image.url }}" alt="{{ instance.name}} logo"></a>
+    <a href="/product/{{instance.id}}"><img class="card-img-top" src="{{ instance.image.url }}" alt="{{ instance.name}} logo"></a>
     {% endif %}
   <div class="card-body">
     <h4 class="card-title">{{ instance.name}}</h4>

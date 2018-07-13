@@ -1,8 +1,10 @@
 from django.db import models
 from product.models import Product
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Order(models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE ,blank=True, null=True)
     first_name=models.CharField(max_length=30)
     last_name = models.CharField(max_length=60)
     email = models.EmailField()
@@ -11,10 +13,11 @@ class Order(models.Model):
     city = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    paid = models.BooleanField(default=False)
+    paid = models.BooleanField(default=False,blank=True)
+    phone_no=models.CharField(max_length=12)
 
-    class Meta:
-        ordering=('-created', )
+    # class Meta:
+    #     ordering=('-created', )
 
 
     def get_total_cost(self):
