@@ -25,7 +25,9 @@ SECRET_KEY = 'r*4jisk#c^4gl0-#x_x_sm%f9t-t4#n@j$ea_6sep@1&aobl-k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#ALLOWED_HOSTS = ['www.kharidle.com']
 ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -41,8 +43,8 @@ INSTALLED_APPS = [
     'product',
     'search',
     'cart',
-    'widget_tweaks',
-    'orders'
+    'orders',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [

@@ -4,7 +4,7 @@
 {% url 'loginf' as login_url %}
 {% url 'register' as register_url %}
 {% url 'logout' as logout_url %}
-{% url 'card_detail' as cart_url %}
+{% url 'cart_detail' as cart_url %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
     <div class='container'>
         <a class="navbar-brand" href="{{ home_url }}">
@@ -56,13 +56,12 @@
 
 
                  <li class="nav-item {% if request.path == cart_url %}active{% endif %}">
-                   <a class="nav-link" href="{{ cart_url }}"> {{ request.session. }} <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                   <a class="nav-link" href="{{ cart_url }}">{{request.session.cart|length}}<i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
                  </li>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0" action='{% url "search:query" %}'>
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"
-                       value='{{ request.GET.q }}'>
+            <form class="form-inline my-2 my-lg-0" action='{% url "search:query" %}' method='GET'>
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" name='q' aria-label="Search" value='{{request.GET.q}}'>
 
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
